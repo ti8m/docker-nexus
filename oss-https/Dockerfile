@@ -20,8 +20,8 @@ RUN sed -i '/wrapper.app.parameter.2/a wrapper.app.parameter.3=./conf/jetty-http
 USER nexus
 
 # Setup mount point for keystore location
-ENV NEXUS-KEYSTORE /etc/ssl/nexus
-VOLUME ${NEXUS-KEYSTORE}
+ENV NEXUS_KEYSTORE /etc/ssl/nexus
+VOLUME ${NEXUS_KEYSTORE}
 
 # Additionally to the description on the above linked page,
 # the neccessary jetty configuration files will be activated now:
