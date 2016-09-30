@@ -23,6 +23,9 @@ USER nexus
 ENV NEXUS_KEYSTORE /etc/ssl/nexus
 VOLUME ${NEXUS_KEYSTORE}
 
+# Fix context path
+ENV CONTEXT_PATH /
+
 # Additionally to the description on the above linked page,
 # the neccessary jetty configuration files will be activated now:
 ENV LAUNCHER_CONF ./conf/jetty.xml ./conf/jetty-https.xml ./conf/jetty-requestlog.xml ./conf/jetty-http-redirect-to-https.xml
