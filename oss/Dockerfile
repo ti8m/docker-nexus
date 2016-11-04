@@ -1,8 +1,25 @@
+# Copyright (c) 2014-present Sonatype, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 FROM       centos:centos7
 MAINTAINER Sonatype <cloud-ops@sonatype.com>
+LABEL vendor=Sonatype \
+  com.sonatype.license="Apache License, Version 2.0" \
+  com.sonatype.name="Nexus Repository Manager OSS base image"
 
 ENV SONATYPE_WORK /sonatype-work
-ENV NEXUS_VERSION 2.14.0-01
+ENV NEXUS_VERSION 2.14.1-01
 
 ENV JAVA_HOME /opt/java
 ENV JAVA_VERSION_MAJOR 8
@@ -34,6 +51,7 @@ RUN useradd -r -u 200 -m -c "nexus role account" -d ${SONATYPE_WORK} -s /bin/fal
 
 VOLUME ${SONATYPE_WORK}
 
+EXPOSE 8081
 WORKDIR /opt/sonatype/nexus
 USER nexus
 ENV CONTEXT_PATH /nexus
