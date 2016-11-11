@@ -16,6 +16,11 @@ RUN sed -i '/wrapper.app.parameter.2/a wrapper.app.parameter.3=./conf/jetty-http
  && sed -i 's#\(<Set name="keyManagerPassword">\)\(.*\)\(</Set>\)#\1changeit\3#g' /opt/sonatype/nexus/conf/jetty-https.xml \
  && sed -i 's#\(<Set name="trustStorePassword">\)\(.*\)\(</Set>\)#\1changeit\3#g' /opt/sonatype/nexus/conf/jetty-https.xml
 
+# Fix timezone
+ENV TZ=Europe/Zurich
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
+ && echo $TZ > /etc/timezone
+
 # Switch back to user nexus
 USER nexus
 
