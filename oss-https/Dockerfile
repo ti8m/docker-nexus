@@ -18,7 +18,7 @@ RUN sed -i '/wrapper.app.parameter.2/a wrapper.app.parameter.3=./conf/jetty-http
 
 # Fix timezone
 ENV TZ=Europe/Zurich
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
  && echo $TZ > /etc/timezone
 
 # Switch back to user nexus
